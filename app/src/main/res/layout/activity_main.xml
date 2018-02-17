@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dreldritch.tmmcalculator.controller.MainActivity">
+    tools:context="com.dreldritch.tmmcalculator.controller.MainActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/addPositionActionButton"
         android:layout_width="46dp"
         android:layout_height="45dp"
         android:layout_marginBottom="16dp"
