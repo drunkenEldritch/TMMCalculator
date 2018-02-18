@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import com.dreldritch.tmmcalculator.R
+import com.dreldritch.tmmcalculator.Services.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,10 +19,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showPositionDialog(){
-
-        val tag = "PosDialog"
         val fm: FragmentManager = supportFragmentManager
         val posDialog:PositionDialogFragment = PositionDialogFragment.newInstance()
-        posDialog.show(fm, tag)
+        posDialog.show(fm, POSITION_DIALOG_FRAGMENT)
     }
 }
