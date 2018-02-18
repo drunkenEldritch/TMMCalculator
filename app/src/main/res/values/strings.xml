@@ -3,4 +3,19 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="position_dialog_header">Add a new position...</string>
+    <string name="currency_str">Currency:</string>
+    <string name="price_str">Price:</string>
+    <string name="name_str">Name:</string>
+    <string name="description_str">Description:</string>
+    <string name="abort_str">Abort</string>
+    <string name="ok_str">Ok</string>
+    <string name="date_str">Date:</string>
+    <string name="time_str">Time:</string>
+
+
+    <!-- Currency-Spinner -->
+    <string-array name="currency_array">
+        <item>€</item>
+        <item>$</item>
+    </string-array>
 </resources>
