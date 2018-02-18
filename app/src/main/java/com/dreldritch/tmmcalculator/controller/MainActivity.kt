@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun showPositionDialog(){
+    private fun showPositionDialog(){
 
         val tag = "PosDialog"
         val fm: FragmentManager = supportFragmentManager

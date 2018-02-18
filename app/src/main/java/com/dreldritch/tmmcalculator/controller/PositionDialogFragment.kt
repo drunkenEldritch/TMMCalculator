@@ -1,12 +1,8 @@
 package com.dreldritch.tmmcalculator.controller
 
-
-import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
-import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,8 +29,9 @@ class PositionDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val timeformatter = SimpleDateFormat("hh:mm")
-        val dateformatter = SimpleDateFormat("yyyy/MM/dd")
+        //For localization use getTimeInstance(), getDateInstance() or getDateTimeInstance()
+        val timeformatter = SimpleDateFormat.getTimeInstance()
+        val dateformatter = SimpleDateFormat.getDateInstance()
         val time = timeformatter.format(Date())
         val date = dateformatter.format(Date())
 
@@ -49,13 +46,12 @@ class PositionDialogFragment : DialogFragment() {
 //        private val ARG_PARAM2 = "param2"
 
         fun newInstance(): PositionDialogFragment {
-            val fragment = PositionDialogFragment()
+            /*val fragment = PositionDialogFragment()
             val args = Bundle()
-            /*args.putString(ARG_PARAM1, param1)
+            args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)
             fragment.arguments = args*/
-
-            return fragment
+            return PositionDialogFragment()
         }
     }
 
