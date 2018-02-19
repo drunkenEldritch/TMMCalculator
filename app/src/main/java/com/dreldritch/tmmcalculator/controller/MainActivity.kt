@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import com.dreldritch.tmmcalculator.R
-import com.dreldritch.tmmcalculator.Services.*
+import com.dreldritch.tmmcalculator.services.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
