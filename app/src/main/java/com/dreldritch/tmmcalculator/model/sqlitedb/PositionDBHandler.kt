@@ -18,7 +18,6 @@ class PositionDBHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, n
         const val DESCRIPTION = "description"
         const val PRICE = "price"
         const val DATE = "date"
-        const val TIME = "time"
 
         private const val CREATE_TABLE_POSITION = "CREATE TABLE " + POSITION_TABLE + "(" +
                 ID          + " INTEGER PRIMARY KEY, " +
@@ -26,7 +25,6 @@ class PositionDBHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, n
                 DESCRIPTION + " TEXT, "     +
                 PRICE       + " REAL, "     +
                 DATE        + " TEXT," +
-                TIME        + " TEXT" +
                 ");"
 
         private var hInstance: PositionDBHandler? = null

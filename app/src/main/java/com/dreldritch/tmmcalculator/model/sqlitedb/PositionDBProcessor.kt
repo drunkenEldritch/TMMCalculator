@@ -12,37 +12,39 @@ class PositionDBProcessor(context: Context){
     val dbhelper = PositionDBHandler.getInstance(context)
 
     //Creating, updating, deleting
-    fun saveRecord(id: Long?, name: String, description: String, price: Double, date: String, time: String) {
+    fun savePosition(id: Long?, position: Position) {
         if (id!=null) {
-            updateRecord(id, name, description, price, date, time)
+            updatePosition(position)
         } else {
-            addPosition(name, description, price, date, time)
+            addPosition(position)
         }
     }
 
-    fun addPosition(name: String, description: String, price: Double, date: String, time: String): Long{
-        val db = dbhelper.writableDatabase
+    private fun addPosition(position: Position): Long{
+
         val values = ContentValues()
-        values.put(PositionDBHandler.NAME, name)
-        values.put(PositionDBHandler.DESCRIPTION, description)
-        values.put(PositionDBHandler.PRICE, price)
-        values.put(PositionDBHandler.DATE, date)
-        values.put(PositionDBHandler.TIME, time)
+        values.put(PositionDBHandler.NAME, position._name)
+        values.put(PositionDBHandler.DESCRIPTION, position._description)
+        values.put(PositionDBHandler.PRICE, position._price)
+        values.put(PositionDBHandler.DATE, position._date)
+
+        val db = dbhelper.writableDatabase
         val result = db.insert(PositionDBHandler.POSITION_TABLE, null, values)
         db.close()
         return result
     }
 
-    fun updateRecord(id: Long, name: String, description: String, price: Double, date: String, time: String): Int {
-        val db = dbhelper.writableDatabase
+    private fun updatePosition(position: Position): Int {
+
         val values = ContentValues()
-        values.put(PositionDBHandler.ID, id)
-        values.put(PositionDBHandler.NAME, name)
-        values.put(PositionDBHandler.DESCRIPTION, description)
-        values.put(PositionDBHandler.PRICE, price)
-        values.put(PositionDBHandler.DATE, date)
-        values.put(PositionDBHandler.TIME, time)
-        val result =  db.update(PositionDBHandler.POSITION_TABLE, values, "_id = ?", arrayOf(id.toString()))
+        values.put(PositionDBHandler.ID, position._id)
+        values.put(PositionDBHandler.NAME, position._name)
+        values.put(PositionDBHandler.DESCRIPTION, position._description)
+        values.put(PositionDBHandler.PRICE, position._price)
+        values.put(PositionDBHandler.DATE, position._date)
+
+        val db = dbhelper.writableDatabase
+        val result =  db.update(PositionDBHandler.POSITION_TABLE, values, "_id = ?", arrayOf(position._id.toString()))
         db.close()
         return result
     }
@@ -65,22 +67,19 @@ class PositionDBProcessor(context: Context){
 
         Log.i(LOG, "Cursor.getCount() = ${cursor.count}")
 
-        //TODO Enum for columns?
         if (cursor.count > 0) {
             Log.d(LOG, "id = ${cursor.getLong(0)}\n" +
                     "name = ${cursor.getString(1)}\n" +
                     "desc = ${cursor.getString(2)}\n" +
                     "price = ${cursor.getDouble(3)}\n" +
-                    "date = ${cursor.getString(4)}\n" +
-                    "date = ${cursor.getString(5)}\n"
+                    "date = ${cursor.getString(4)}\n"
             )
 
             position = Position(cursor.getLong(0),
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getDouble(3),
-                    cursor.getString(4),
-                    cursor.getString(5))
+                    cursor.getString(4))
             cursor.close()
         }
         return position!!
