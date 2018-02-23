@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dreldritch.tmmcalculator.R
+import com.dreldritch.tmmcalculator.viewmodel.ItemViewModel
 import com.dreldritch.tmmcalculator.model.roomdb.ItemData
-import com.dreldritch.tmmcalculator.model.roomdb.ItemRepository
 import kotlinx.android.synthetic.main.fragment_position_dialog.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -47,12 +47,11 @@ class PositionDialogFragment : DialogFragment() {
                         pos_name_edit.text.toString(),
                         pos_description_edit.text.toString(),
                         pos_price_edit.text.toString().toDouble(),
-                        pos_currency_spinner.getSelectedItem().toString(),
+                        pos_currency_spinner.selectedItem.toString(),
                         pos_date_edit.text.toString())
             }
 
             //Add item to DB
-            //TODO add DB insert(async)
             itemViewModel.insert(item!!)
             dismiss()
         }
@@ -60,9 +59,9 @@ class PositionDialogFragment : DialogFragment() {
 
     companion object {
         // the fragment initialization parameters
-        private val ITEM = "item"
+        const val ITEM = "item"
 
-        fun newInstance(item: ItemData?): PositionDialogFragment {
+        private fun newInstance(item: ItemData?): PositionDialogFragment {
             val fragment = PositionDialogFragment()
 
             if(item == null){

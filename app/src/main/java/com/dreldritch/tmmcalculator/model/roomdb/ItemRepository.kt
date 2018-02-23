@@ -3,8 +3,6 @@ package com.dreldritch.tmmcalculator.model.roomdb
 import android.os.AsyncTask
 import android.app.Application
 import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.Room
-import com.dreldritch.tmmcalculator.services.DB_NAME
 
 class ItemRepository(application: Application) {
 

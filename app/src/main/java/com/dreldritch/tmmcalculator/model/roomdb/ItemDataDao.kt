@@ -5,9 +5,6 @@ import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
 import com.dreldritch.tmmcalculator.services.ITEMDATA_TABLE
 
-/**
- * Created by cerox on 22.02.2018.
- */
 @Dao
 interface ItemDataDao {
 

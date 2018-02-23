@@ -7,9 +7,6 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.dreldritch.tmmcalculator.services.ITEMDATA_TABLE
 
-/**
- * Created by cerox on 22.02.2018.
- */
 @Entity(tableName = ITEMDATA_TABLE)
 data class ItemData(
         @PrimaryKey(autoGenerate = true) var id: Long?,
