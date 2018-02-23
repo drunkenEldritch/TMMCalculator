@@ -26,17 +26,17 @@ class PositionDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*val itemViewModel = ViewModelProviders.of(this.activity).get(ItemViewModel::class.java)*/
-        val item_repo = ItemRepository(activity.application)
+        val itemViewModel = ViewModelProviders.of(this.activity).get(ItemViewModel::class.java)
+        /*val item_repo = ItemRepository(activity.application)*/
 
         //Edit-event. Fragment is used to edit an existing item object
-        /*if(savedInstanceState != null)
+        if(savedInstanceState != null)
             item = savedInstanceState.getParcelable(ITEM) as ItemData
 
         if(item != null){
             setItemFields(item!!)
             setDateField(Date())
-        }else*/
+        }else
             setDateField(Date())
 
         pos_abort_btn.setOnClickListener { dismiss() }
@@ -53,7 +53,7 @@ class PositionDialogFragment : DialogFragment() {
 
             //Add item to DB
             //TODO add DB insert(async)
-            item_repo.insert(item!!)
+            itemViewModel.insert(item!!)
             dismiss()
         }
     }

@@ -18,7 +18,7 @@ data class ItemData(
         @ColumnInfo(name = "price") var price: Double,
         @ColumnInfo(name = "currency") var currency: String,
         @ColumnInfo(name = "date") var date: String
-)/* : Parcelable {
+) : Parcelable {
 
     constructor(parcel: Parcel) : this(
             parcel.readValue(Long::class.java.classLoader) as? Long,
@@ -50,7 +50,7 @@ data class ItemData(
             return arrayOfNulls(size)
         }
     }
-}*/
+}
 
 
 
