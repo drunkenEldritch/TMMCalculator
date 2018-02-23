@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.util.Log
-import com.dreldritch.tmmcalculator.model.Position
 
 class PositionDBProcessor(context: Context){
 

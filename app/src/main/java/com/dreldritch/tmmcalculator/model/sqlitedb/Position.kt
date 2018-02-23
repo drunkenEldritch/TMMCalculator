@@ -1,4 +1,4 @@
-package com.dreldritch.tmmcalculator.model
+package com.dreldritch.tmmcalculator.model.sqlitedb
 
 import android.os.Parcel
 import android.os.Parcelable
