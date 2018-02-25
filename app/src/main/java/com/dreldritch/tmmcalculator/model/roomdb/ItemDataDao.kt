@@ -17,12 +17,12 @@ interface ItemDataDao {
     @Delete
     fun delete(itemData: ItemData)
 
-    @Query("SELECT * FROM $ITEMDATA_TABLE" )
-    fun getAll(): LiveData<List<ItemData>>
-
     @Query("DELETE FROM $ITEMDATA_TABLE")
     fun deleteAll()
 
-    @Query("SELECT * FROM ${ITEMDATA_TABLE} WHERE month = :_month")
-    fun getAllFromMonth(_month: Int)
+    @Query("SELECT * FROM $ITEMDATA_TABLE" )
+    fun getAll(): LiveData<List<ItemData>>
+
+    @Query("SELECT * FROM ${ITEMDATA_TABLE} WHERE month = :month")
+    fun getAllFromMonth(month: Int): LiveData<List<ItemData>>
 }

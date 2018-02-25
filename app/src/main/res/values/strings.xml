@@ -14,9 +14,25 @@
     <string name="time_str">Time:</string>
     <string name="position">Position</string>
 
-    <!-- Currency-Spinner -->
+    <!-- ItemFragment: Currency-Spinner -->
     <string-array name="currency_array">
         <item>€</item>
         <item>$</item>
+    </string-array>
+
+    <!-- MonthList: Month Spinner -->
+    <string-array name="month_array">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>Mai</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Okt</item>
+        <item>Nov</item>
+        <item>Dez</item>
     </string-array>
 </resources>

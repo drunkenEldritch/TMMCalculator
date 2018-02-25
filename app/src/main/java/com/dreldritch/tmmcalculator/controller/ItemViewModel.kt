@@ -1,4 +1,4 @@
-package com.dreldritch.tmmcalculator.viewmodel
+package com.dreldritch.tmmcalculator.controller
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel

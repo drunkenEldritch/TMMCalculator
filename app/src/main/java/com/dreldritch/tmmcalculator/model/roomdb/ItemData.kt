@@ -14,9 +14,10 @@ data class ItemData(
         @ColumnInfo(name = "description") var description: String,
         @ColumnInfo(name = "price") var price: Double,
         @ColumnInfo(name = "currency") var currency: String,
-        @ColumnInfo(name = "day") var day: String,
-        @ColumnInfo(name = "month") var month: String,
-        @ColumnInfo(name = "year") var year: String
+        @ColumnInfo(name = "day") var day: Int,
+        @ColumnInfo(name = "month") var month: Int,
+        @ColumnInfo(name = "year") var year: Int,
+        @ColumnInfo(name = "date") var date: String
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
@@ -25,8 +26,9 @@ data class ItemData(
             parcel.readString(),
             parcel.readDouble(),
             parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
+            parcel.readInt(),
+            parcel.readInt(),
+            parcel.readInt(),
             parcel.readString())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -35,9 +37,10 @@ data class ItemData(
         parcel.writeString(description)
         parcel.writeDouble(price)
         parcel.writeString(currency)
-        parcel.writeString(day)
-        parcel.writeString(month)
-        parcel.writeString(year)
+        parcel.writeInt(day)
+        parcel.writeInt(month)
+        parcel.writeInt(year)
+        parcel.writeString(date)
     }
 
     override fun describeContents(): Int {
