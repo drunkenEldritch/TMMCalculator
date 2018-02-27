@@ -1,5 +1,6 @@
 package com.dreldritch.tmmcalculator.services
 
+import android.util.Log
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -8,12 +9,15 @@ import java.util.*
 /**
  * Created by cerox on 25.02.2018.
  */
-class DateHelper() {
+class DateHelper(private val pref_format: String) {
 
-    var format = "dd/MM/yyyy"
-    var day = 0
-    var month = 0
-    var year = 0
+    private val tag = "DateHelper"
+
+    companion object {
+        val DATESORT = "yyyy-MM-dd"
+        val DATESLASH = "dd/MM/yyyy"
+        val DATEPOINT = "dd.MM.yyyy"
+    }
 
     /**
      * Set current date and time in EditTextView. For localization use getTimeInstance(),
@@ -21,24 +25,29 @@ class DateHelper() {
      */
     fun getCurrentDate(): String {
         //val dateformater = SimpleDateFormat.getDateInstance()
-        val dateformater = SimpleDateFormat(format)
+        val dateformater = SimpleDateFormat(pref_format)
         return dateformater.format(Date())
     }
 
     //TODO test date
-    fun parseDateField(datestring: String) {
-        val dateformat = SimpleDateFormat(format)
-        lateinit var date: Date
+    fun parseDateField(datestring: String): String? {
+
+        var format = if(datestring.matches(Regex("([0-9]{2})/([0-9]{2})/([0-9]{4})"))) DATESLASH
+        else if(datestring.matches(Regex("([0-9]{2}).([0-9]{2}).([0-9]{4})"))) DATEPOINT
+        else if(datestring.matches(Regex("([0-9]{4})-([0-9]{2})-([0-9]{2})"))) DATESORT
+        else return null
+
+        var date: Date? = null
+        val inputFormat = SimpleDateFormat(format)
+        val outputFormat = SimpleDateFormat(DATESORT)
+
         try {
-            date = dateformat.parse(datestring)
+            date = inputFormat.parse(datestring)
         }catch(e: ParseException){
             e.printStackTrace()
+            Log.e(tag, "Wrong format: $datestring.")
         }
-        val cal = Calendar.getInstance()
-        cal.time = date
-        day = cal.get(Calendar.DAY_OF_MONTH)
-        month = cal.get(Calendar.MONTH) + 1
-        year = cal.get(Calendar.YEAR)
+        return outputFormat.format(date)
     }
 
 

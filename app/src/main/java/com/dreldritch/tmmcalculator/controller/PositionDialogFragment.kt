@@ -6,17 +6,17 @@ import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.dreldritch.tmmcalculator.R
 import com.dreldritch.tmmcalculator.model.roomdb.ItemData
 import com.dreldritch.tmmcalculator.services.DateHelper
 import kotlinx.android.synthetic.main.fragment_position_dialog.*
 
-//TODO Test if fragment is dimissed when clicked on activity while fragment is open
-//TODO Check date format before adding into DB
 class PositionDialogFragment : DialogFragment() {
 
     private var item: ItemData? = null
-    private var datehelper = DateHelper()
+
+    private var datehelper = DateHelper("yyyy-MM-dd")
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater!!.inflate(R.layout.fragment_position_dialog, container, false)
@@ -28,31 +28,34 @@ class PositionDialogFragment : DialogFragment() {
         val itemViewModel = ViewModelProviders.of(this.activity).get(ItemViewModel::class.java)
 
         //Edit-event. Fragment is used to edit an existing item object
-        if(savedInstanceState != null)
+        /*if(savedInstanceState != null)
             item = savedInstanceState?.getParcelable(ITEM) as ItemData
 
         if(item != null){
             setItemFields(item!!)
             pos_date_edit.setText(item!!.date)
-        }else
-            pos_date_edit.setText(datehelper.getCurrentDate())
+        }else*/
+
+        pos_date_edit.setText(datehelper.getCurrentDate())
 
         //Button ClickListener
         pos_abort_btn.setOnClickListener { dismiss() }
 
         pos_ok_button.setOnClickListener {
-            if(item == null){
 
-                datehelper.parseDateField(pos_date_edit.text.toString())
+            //TODO Check input data
+            val date: String? = datehelper.parseDateField(pos_date_edit.text.toString())
+
+            if(date == null)
+                Toast.makeText(this.context, "Wrong date format!", Toast.LENGTH_SHORT)
+
+            if(item == null){
                 item = ItemData(null,
                         pos_name_edit.text.toString(),
                         pos_description_edit.text.toString(),
                         pos_price_edit.text.toString().toDouble(),
                         pos_currency_spinner.selectedItem.toString(),
-                        datehelper.day,
-                        datehelper.month,
-                        datehelper.year,
-                        pos_date_edit.text.toString())
+                        date!!)
             }
 
             //Add item to DB
