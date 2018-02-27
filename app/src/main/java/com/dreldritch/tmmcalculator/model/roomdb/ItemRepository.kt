@@ -23,9 +23,20 @@ class ItemRepository(application: Application) {
         InsertAsyncTask(itemDao).execute(item)
     }
 
+    fun update(item: ItemData) {
+        UpdateAsyncTask(itemDao).execute(item)
+    }
+
     private class InsertAsyncTask(val asyncTaskDao: ItemDataDao) : AsyncTask<ItemData, Void, Void>() {
         override fun doInBackground(vararg item: ItemData): Void? {
             asyncTaskDao.insert(item[0])
+            return null
+        }
+    }
+
+    private class UpdateAsyncTask(val asyncTaskDao: ItemDataDao) : AsyncTask<ItemData, Void, Void>() {
+        override fun doInBackground(vararg item: ItemData): Void? {
+            asyncTaskDao.update(item[0])
             return null
         }
     }

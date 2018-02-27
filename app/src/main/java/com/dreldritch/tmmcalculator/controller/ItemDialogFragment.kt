@@ -76,8 +76,8 @@ class ItemDialogFragment : DialogFragment() {
                     item!!.description = description
                     item!!.price = price
                     item!!.currency = currency
-                    item!!.date
-                    itemViewModel.insert(item!!)
+                    item!!.date = date
+                    itemViewModel.update(item!!)
                     dismiss()
                 }
             }
