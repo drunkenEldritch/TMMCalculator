@@ -11,6 +11,7 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     private val itemRepository = ItemRepository(application)
 
     fun insert(item: ItemData) = itemRepository.insert(item)
-    fun getAllFromMonth(month: Int, year: Int): LiveData<List<ItemData>> = itemRepository.getAllFromMonth(month, year)
+    fun getAllFromMonth(month_regex: String): LiveData<List<ItemData>> = itemRepository.getAllFromMonth(month_regex)
+    /*fun getAllFromMonth(): LiveData<List<ItemData>> = itemRepository.getAllFromMonth()*/
     fun getAllItems():LiveData<List<ItemData>> = itemRepository.getAllItems()
 }

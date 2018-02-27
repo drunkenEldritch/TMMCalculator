@@ -7,6 +7,13 @@
     tools:context="com.dreldritch.tmmcalculator.controller.MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
+    <ExpandableListView
+        android:id="@+id/expListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ExpandableListView>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addPositionActionButton"
         android:layout_width="46dp"

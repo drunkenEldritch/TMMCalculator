@@ -15,7 +15,8 @@ class ItemRepository(application: Application) {
 
     //Room executes all queries on a separate thread
     fun getAllItems():LiveData<List<ItemData>> = itemDao.getAll()
-    fun getAllFromMonth(month: Int, year: Int):LiveData<List<ItemData>> = itemDao.getAllFromMonth(month, year)
+    fun getAllFromMonth(month_regex: String):LiveData<List<ItemData>> = itemDao.getAllFromMonth(month_regex)
+    /*fun getAllFromMonth():LiveData<List<ItemData>> = itemDao.getAllFromMonth()*/
 
     //TODO Check why insert need async task
     fun insert(item: ItemData) {
