@@ -12,7 +12,7 @@ import com.dreldritch.tmmcalculator.model.roomdb.ItemData
 import com.dreldritch.tmmcalculator.services.DateHelper
 import kotlinx.android.synthetic.main.fragment_position_dialog.*
 
-class PositionDialogFragment : DialogFragment() {
+class ItemDialogFragment : DialogFragment() {
 
     private var item: ItemData? = null
 
@@ -43,24 +43,44 @@ class PositionDialogFragment : DialogFragment() {
 
         pos_ok_button.setOnClickListener {
 
-            //TODO Check input data
-            val date: String? = datehelper.parseDateField(pos_date_edit.text.toString())
-
-            if(date == null)
-                Toast.makeText(this.context, "Wrong date format!", Toast.LENGTH_SHORT)
-
-            if(item == null){
-                item = ItemData(null,
-                        pos_name_edit.text.toString(),
-                        pos_description_edit.text.toString(),
-                        pos_price_edit.text.toString().toDouble(),
-                        pos_currency_spinner.selectedItem.toString(),
-                        date!!)
+            //Validate name
+            var name: String? = pos_name_edit.text.toString()
+            if(name == "") {
+                name = null
+                Toast.makeText(this.context, "ItemName is needed!", Toast.LENGTH_SHORT).show()
             }
 
-            //Add item to DB
-            itemViewModel.insert(item!!)
-            dismiss()
+            //Get description
+            val description = pos_description_edit.text.toString()
+
+            //TODO Check two numbers after point
+            //Validate price
+            val price_str = pos_price_edit.text.toString()
+            val price = if(price_str != "")price_str.toDouble() else 0.0
+
+            //Get currency
+            val currency = pos_currency_spinner.selectedItem.toString()
+
+            //Validate date
+            val date: String? = datehelper.parseDateField(pos_date_edit.text.toString())
+            if(date == null)
+                Toast.makeText(this.context, "Wrong date format!", Toast.LENGTH_SHORT).show()
+
+            if(name != null && date != null){
+                if(item == null){
+                    item = ItemData(null, name, description, price, currency, date)
+                    itemViewModel.insert(item!!)
+                    dismiss()
+                }else{
+                    item!!.name = name
+                    item!!.description = description
+                    item!!.price = price
+                    item!!.currency = currency
+                    item!!.date
+                    itemViewModel.insert(item!!)
+                    dismiss()
+                }
+            }
         }
     }
 
@@ -71,8 +91,8 @@ class PositionDialogFragment : DialogFragment() {
         // the fragment initialization parameters
         const val ITEM = "item"
 
-        private fun newInstance(item: ItemData?): PositionDialogFragment {
-            val fragment = PositionDialogFragment()
+        private fun newInstance(item: ItemData?): ItemDialogFragment {
+            val fragment = ItemDialogFragment()
 
             if(item == null){
                 val args = Bundle()

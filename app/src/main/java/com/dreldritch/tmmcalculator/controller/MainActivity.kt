@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showPositionDialog(){
         val fm: FragmentManager = supportFragmentManager
-        val posDialog:PositionDialogFragment = PositionDialogFragment.newInstance()
+        val posDialog: ItemDialogFragment = ItemDialogFragment.newInstance()
         posDialog.show(fm, POSITION_DIALOG_FRAGMENT)
     }
 }
