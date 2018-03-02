@@ -35,4 +35,9 @@
         <item>Nov</item>
         <item>Dez</item>
     </string-array>
+
+    <!--TabbedListActivity-->
+    <string name="title_activity_tabbed_list">TabbedListActivity</string>
+    <string name="tab_text_1">Month</string>
+    <string name="tab_text_2">Tags</string>
 </resources>

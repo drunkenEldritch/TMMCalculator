@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.dreldritch.tmmcalculator.R
 import com.dreldritch.tmmcalculator.model.roomdb.ItemData
-import com.dreldritch.tmmcalculator.services.DateHelper
+import com.dreldritch.tmmcalculator.util.DateHelper
 import kotlinx.android.synthetic.main.fragment_position_dialog.*
 
 class ItemDialogFragment : DialogFragment() {
