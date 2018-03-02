@@ -3,7 +3,7 @@
     <string name="app_name">TMMCalculator</string>
 
     <!-- Dialog Fragment -->
-    <string name="position_dialog_header">Add a new position&#8230;</string>
+    <string name="position_dialog_header">Add a new item&#8230;</string>
     <string name="currency_str">Currency:</string>
     <string name="price_str">Price:</string>
     <string name="name_str">Name:</string>
@@ -11,7 +11,7 @@
     <string name="abort_str">Abort</string>
     <string name="ok_str">OK</string>
     <string name="date_str">Date:</string>
-    <string name="time_str">Time:</string>
+    <string name="time_str">Time:</string><!---->
     <string name="position">Position</string>
 
     <!-- ItemFragment: Currency-Spinner -->
