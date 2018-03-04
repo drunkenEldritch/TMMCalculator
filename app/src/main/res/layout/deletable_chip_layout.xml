@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/deletable_txt_chip_drawable">
+
+    <TextView
+        android:id="@+id/deletable_chip_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingLeft="@dimen/chip_padding"
+        android:text="TestChip"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="@dimen/remove_icon_dimen"
+        android:layout_height="@dimen/remove_icon_dimen"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/chip_btn_left_margin"
+        android:layout_toRightOf="@id/deletable_chip_txt"
+        android:tint="@android:color/darker_gray"
+        app:srcCompat="@android:drawable/presence_offline" />
+
+</RelativeLayout>
