@@ -4,8 +4,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import com.dreldritch.tmmcalculator.R
-import com.dreldritch.tmmcalculator.services.*
+import com.dreldritch.tmmcalculator.util.*
 import kotlinx.android.synthetic.main.activity_main.*
+import android.content.Intent
+import android.support.design.widget.Snackbar
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,14 +16,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        addPositionActionButton.setOnClickListener {
-            showPositionDialog()
+        addPositionActionButton.setOnClickListener {view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
         }
-    }
 
-    private fun showPositionDialog(){
-        val fm: FragmentManager = supportFragmentManager
-        val posDialog:PositionDialogFragment = PositionDialogFragment.newInstance()
-        posDialog.show(fm, POSITION_DIALOG_FRAGMENT)
+        testBtn.setOnClickListener {
+            val intent = Intent(this, TabbedListActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

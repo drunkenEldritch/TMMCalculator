@@ -3,7 +3,7 @@
     <string name="app_name">TMMCalculator</string>
 
     <!-- Dialog Fragment -->
-    <string name="position_dialog_header">Add a new position&#8230;</string>
+    <string name="position_dialog_header">Add a new item&#8230;</string>
     <string name="currency_str">Currency:</string>
     <string name="price_str">Price:</string>
     <string name="name_str">Name:</string>
@@ -11,12 +11,36 @@
     <string name="abort_str">Abort</string>
     <string name="ok_str">OK</string>
     <string name="date_str">Date:</string>
-    <string name="time_str">Time:</string>
+    <string name="time_str">Time:</string><!---->
     <string name="position">Position</string>
 
-    <!-- Currency-Spinner -->
+    <!-- ItemFragment: Currency-Spinner -->
     <string-array name="currency_array">
         <item>€</item>
         <item>$</item>
     </string-array>
+
+    <!-- MonthList: Month Spinner -->
+    <string-array name="month_array">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>Mai</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Okt</item>
+        <item>Nov</item>
+        <item>Dez</item>
+    </string-array>
+
+    <!--TabbedListActivity-->
+    <string name="title_activity_tabbed_list">TabbedListActivity</string>
+    <string name="tab_text_1">Month</string>
+    <string name="tab_text_2">Tags</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
