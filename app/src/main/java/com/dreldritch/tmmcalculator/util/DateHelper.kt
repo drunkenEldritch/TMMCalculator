@@ -1,7 +1,6 @@
-package com.dreldritch.tmmcalculator.services
+package com.dreldritch.tmmcalculator.util
 
 import android.util.Log
-import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*

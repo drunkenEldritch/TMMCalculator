@@ -3,7 +3,7 @@ package com.dreldritch.tmmcalculator.model.roomdb
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import com.dreldritch.tmmcalculator.services.ITEMDATA_TABLE
+import com.dreldritch.tmmcalculator.util.ITEMDATA_TABLE
 
 @Dao
 interface ItemDataDao {
