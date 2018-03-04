@@ -3,7 +3,6 @@ package com.dreldritch.tmmcalculator.controller
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.design.widget.TabLayout
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.app.Fragment
@@ -15,8 +14,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.dreldritch.tmmcalculator.R
+import com.dreldritch.tmmcalculator.dialog.AddItemFragmentDialog
 import com.dreldritch.tmmcalculator.model.roomdb.ItemData
-import com.dreldritch.tmmcalculator.util.POSITION_DIALOG_FRAGMENT
 import kotlinx.android.synthetic.main.activity_tabbed_list.*
 import kotlinx.android.synthetic.main.fragment_tabbed_list.*
 
@@ -52,9 +51,9 @@ class TabbedListActivity : AppCompatActivity() {
     }
 
     private fun showPositionDialog(){
-        val fm: FragmentManager = supportFragmentManager
-        val posDialog: ItemDialogFragment = ItemDialogFragment.newInstance()
-        posDialog.show(fm, POSITION_DIALOG_FRAGMENT)
+        val fm = supportFragmentManager
+        val dialog = AddItemFragmentDialog.newInstance()
+        dialog.show(fm, "AddItemDialogFragment")
     }
 
     /**
