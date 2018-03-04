@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/chip_margin"
+    android:layout_marginBottom="@dimen/chip_margin"
+    android:layout_marginEnd="@dimen/chip_margin"
+    android:layout_marginLeft="@dimen/chip_margin"
+    android:layout_marginRight="@dimen/chip_margin"
+    android:layout_marginStart="@dimen/chip_margin"
+    android:layout_marginTop="@dimen/chip_margin"
     android:background="@drawable/deletable_txt_chip_drawable">
 
     <TextView
@@ -12,7 +19,6 @@
         android:layout_centerVertical="true"
         android:paddingLeft="@dimen/chip_padding"
         android:text="TestChip"
-        android:textAlignment="textStart"
         android:textStyle="bold" />
 
     <ImageButton
@@ -20,9 +26,8 @@
         android:layout_width="@dimen/remove_icon_dimen"
         android:layout_height="@dimen/remove_icon_dimen"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/chip_btn_left_margin"
+        android:layout_marginLeft="@dimen/chip_btn_txt_gap"
         android:layout_toRightOf="@id/deletable_chip_txt"
-        android:tint="@android:color/darker_gray"
         app:srcCompat="@android:drawable/presence_offline" />
 
 </RelativeLayout>
