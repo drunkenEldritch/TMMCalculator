@@ -1,16 +1,19 @@
 package com.dreldritch.tmmcalculator.model.roomdb
 
+import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.migration.Migration
 import android.content.Context
-import com.dreldritch.tmmcalculator.util.DB_NAME
 
+const val DB_NAME = "item_db"
 
-@Database(entities = arrayOf(ItemData::class), version = 1)
+@Database(entities = arrayOf(ItemData::class, TagData::class, DateData::class), version = 1)
 abstract class ItemDataBase : RoomDatabase() {
 
     abstract fun getItemDataDao(): ItemDataDao
+    abstract fun getTagDataDao(): TagDataDao
 
     companion object {
         private var INSTANCE: ItemDataBase? = null
@@ -20,6 +23,7 @@ abstract class ItemDataBase : RoomDatabase() {
                 synchronized(ItemDataBase::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                             ItemDataBase::class.java, DB_NAME)
+                            .addMigrations(Migration_1_2())
                             .build()
                 }
             }
@@ -29,5 +33,14 @@ abstract class ItemDataBase : RoomDatabase() {
 
     fun destroyInstance() {
         INSTANCE = null
+    }
+
+    class Migration_1_2: Migration(1,2){
+        override fun migrate(database: SupportSQLiteDatabase) {
+
+            database.execSQL("ALTER TABLE ItemData " +
+                    "ADD COLUMN tag_id LONG " +
+                    "DEFAULT NULL")
+        }
     }
 }

@@ -7,10 +7,12 @@ import android.arch.lifecycle.LiveData
 class ItemRepository(application: Application) {
 
     private val itemDao: ItemDataDao
+    private val tagDao: TagDataDao
 
     init {
         val db = ItemDataBase.getDatabase(application)
         itemDao = db.getItemDataDao()
+        tagDao = db.getTagDataDao()
     }
 
     //Room executes all queries on a separate thread
