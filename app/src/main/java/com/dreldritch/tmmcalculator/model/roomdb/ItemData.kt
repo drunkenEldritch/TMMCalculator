@@ -25,9 +25,9 @@ data class ItemData(
         @ColumnInfo(name = "description") var description: String,
         @ColumnInfo(name = "price") var price: Double,
         @ColumnInfo(name = "currency") var currency: String,
-        @ColumnInfo(name = "date_id") var date: String,
+        @ColumnInfo(name = "date") var date: String,
         @ColumnInfo(name = "tag_id") var tagId: Long,
-        @Ignore val itemTag: String
+        @ColumnInfo(name = "date_id") var dateId: Long
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
@@ -38,7 +38,7 @@ data class ItemData(
             parcel.readString(),
             parcel.readString(),
             parcel.readValue(Long::class.java.classLoader) as Long,
-            parcel.readString())
+            parcel.readValue(Long::class.java.classLoader) as Long)
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)
@@ -48,7 +48,7 @@ data class ItemData(
         parcel.writeString(currency)
         parcel.writeString(date)
         parcel.writeValue(tagId)
-        parcel.writeString(itemTag)
+        parcel.writeValue(dateId)
     }
 
     override fun describeContents(): Int {
