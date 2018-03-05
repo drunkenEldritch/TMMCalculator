@@ -35,11 +35,10 @@ abstract class ItemDataBase : RoomDatabase() {
         INSTANCE = null
     }
 
-    class Migration_1_2: Migration(1,2){
+    class Migration_1_2: Migration(1, 2){
         override fun migrate(database: SupportSQLiteDatabase) {
-
             database.execSQL("ALTER TABLE ItemData " +
-                    "ADD COLUMN tag_id LONG " +
+                    "ADD COLUMN tag_id LONG, date_id LONG " +
                     "DEFAULT NULL")
         }
     }
