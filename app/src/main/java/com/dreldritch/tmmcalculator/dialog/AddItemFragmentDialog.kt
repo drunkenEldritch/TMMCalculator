@@ -85,7 +85,7 @@ class AddItemFragmentDialog : DialogFragment() {
             if(date == null)
                 Toast.makeText(this.context, "Wrong date format!", Toast.LENGTH_SHORT).show()
 
-            if(name != null && date != null){
+            /*if(name != null && date != null){
                 if(item == null){
                     item = ItemData(null, name, description, price, currency, date)
                     itemViewModel.insert(item!!)
@@ -99,7 +99,7 @@ class AddItemFragmentDialog : DialogFragment() {
                     itemViewModel.update(item!!)
                     dismiss()
                 }
-            }
+            }*/
         }
     }
 
